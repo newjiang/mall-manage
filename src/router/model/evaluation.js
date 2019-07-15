@@ -8,7 +8,7 @@ const evaluationRouter = {
   name: 'evaluation',
   meta: {
     title: '评价管理',
-    icon: 'chart'
+    icon: 'message'
   },
   children: [
     {

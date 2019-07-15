@@ -8,7 +8,7 @@ const orderRouter = {
   name: 'order',
   meta: {
     title: '订单管理',
-    icon: 'chart'
+    icon: 'list'
   },
   children: [
     {

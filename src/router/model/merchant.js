@@ -8,7 +8,7 @@ const merchantRouter = {
   name: 'merchant',
   meta: {
     title: '商家管理',
-    icon: 'chart'
+    icon: 'people'
   },
   children: [
     {

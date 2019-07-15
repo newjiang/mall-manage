@@ -13,6 +13,7 @@ import commodityRouter from './model/commodity'
 import evaluationRouter from './model/evaluation'
 import merchantRouter from './model/merchant'
 import orderRouter from './model/order'
+import userRouter from './model/user'
 
 /**
   * 注意:子菜单只在路由子菜单时出现。长度> = 1
@@ -81,7 +82,7 @@ export const constantRoutes = [
         path: 'index',
         component: () => import('@/views/dashboard/index'),
         name: 'index',
-        meta: { title: '首页', icon: 'dashboard', affix: true }
+        meta: { title: '首页', icon: 'example', affix: true }
       }
     ]
   },
@@ -193,6 +194,7 @@ export const asyncRoutes = [
   authorityRouter,
   evaluationRouter,
   merchantRouter,
+  userRouter,
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]

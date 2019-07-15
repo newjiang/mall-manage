@@ -8,7 +8,7 @@ const authorityRouter = {
   name: 'authority',
   meta: {
     title: '权限管理',
-    icon: 'chart'
+    icon: 'international'
   },
   children: [
     {

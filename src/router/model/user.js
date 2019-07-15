@@ -1,14 +1,14 @@
 import Layout from '@/layout'
 
 // 商品路由
-const commodityRouter = {
-  path: '/commodity',
+const userRouter = {
+  path: '/user',
   component: Layout,
   redirect: 'noRedirect',
-  name: 'commodity',
+  name: 'user',
   meta: {
-    title: '商品管理',
-    icon: 'shopping'
+    title: '用户管理',
+    icon: 'peoples'
   },
   children: [
     {
@@ -32,4 +32,4 @@ const commodityRouter = {
   ]
 }
 
-export default commodityRouter
+export default userRouter
