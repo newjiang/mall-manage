@@ -1,29 +1,30 @@
 <template>
   <div>
-    <parent-model @row-click="handleItemSelect"/>
+    <parent-model @row-click="handleItemSelect" />
     <child-model
-      :asChild="true"
-      :parentRecord="parentRecord"/>
+      :as-child="true"
+      :parent-record="parentRecord"
+    />
   </div>
 </template>
 
 <script>
-  import ParentModel from './model/parentModel'
-  import ChildModel from './model/childModel'
-  export default {
-    name: 'systemCode',
-    components: {ParentModel, ChildModel},
-    data() {
-      return {
-        parentRecord: {}
-      }
-    },
-    methods: {
-      handleItemSelect(row) {
-        this.parentRecord = row
-      }
+import ParentModel from './model/parentModel'
+import ChildModel from './model/childModel'
+export default {
+  name: 'SystemCode',
+  components: { ParentModel, ChildModel },
+  data() {
+    return {
+      parentRecord: {}
+    }
+  },
+  methods: {
+    handleItemSelect(row) {
+      this.parentRecord = row
     }
   }
+}
 </script>
 
 <style scoped>

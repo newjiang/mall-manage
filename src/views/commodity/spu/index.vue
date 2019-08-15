@@ -1,21 +1,17 @@
 <template>
   <div>
-
+    <h1>hello world</h1>
   </div>
 </template>
 
 <script>
-  import ParentLayout from '@/views/commodity/sort/index'
-  import ChildLayout from '@/views/commodity/sort/index'
-  export default {
-    name: 'spu',
-    components: {Linkage, ParentLayout, ChildLayout},
-    data() {
-      return {
-        parentId:'parentId'
-      }
+export default {
+  name: 'Spu',
+  data() {
+    return {
     }
   }
+}
 </script>
 
 <style scoped>

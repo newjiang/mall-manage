@@ -1,35 +1,37 @@
 <template>
   <div>
     <parent-model
-      idProperty="sortId"
-      @row-click="handleItemSelect"/>
+      id-property="sortId"
+      @row-click="handleItemSelect"
+    />
     <child-model
-      :asChild="true"
-      idProperty="sortId"
-      childFiled="parentId"
-      parentFiled="sortId"
-      :parentRecord="parentRecord"/>
+      :as-child="true"
+      id-property="sortId"
+      child-filed="parentId"
+      parent-filed="sortId"
+      parent-record="parentRecord"
+    />
   </div>
 </template>
 
 <script>
-  import ParentModel from './model/parentModel'
-  import ChildModel from './model/childModel'
+import ParentModel from './model/parentModel'
+import ChildModel from './model/childModel'
 
-  export default {
-    name: 'sort',
-    components: {ParentModel, ChildModel},
-    data() {
-      return {
-        parentRecord: {}
-      }
-    },
-    methods: {
-      handleItemSelect(row) {
-        this.parentRecord = row
-      }
+export default {
+  name: 'Sort',
+  components: { ParentModel, ChildModel },
+  data() {
+    return {
+      parentRecord: {}
+    }
+  },
+  methods: {
+    handleItemSelect(row) {
+      this.parentRecord = row
     }
   }
+}
 </script>
 
 <style scoped>

@@ -38,7 +38,12 @@
               :remote-method="queryOptions"
               @focus="initOptions(item.option)"
             >
-              <el-option v-for="item in options" :key="item" :label="item" :value="item" />
+              <el-option
+                v-for="op in options"
+                :key="op"
+                :label="op"
+                :value="op"
+              />
             </el-select>
           </el-form-item>
         </el-col>
