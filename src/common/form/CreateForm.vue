@@ -4,10 +4,10 @@
       v-for="(item,index) in columns"
       ref="data"
       :key="index"
-      size="mini"
       :model="data"
-      :inline="true"
       :rules="rules"
+      size="mini"
+      :inline="true"
       class="demo-form-inline"
     >
       <el-col :span="12">

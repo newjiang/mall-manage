@@ -1,28 +1,33 @@
 <template>
   <el-row :span="24">
     <el-form
-      size="mini"
+      v-for="(item,index) in columns"
       ref="data"
+      :key="index"
       :model="data"
-      :inline="true"
       :rules="rules"
-      v-for="item in columns"
-      class="demo-form-inline">
+      size="mini"
+      :inline="true"
+      class="demo-form-inline"
+    >
       <el-col :span="12">
         <el-form-item :prop="item.name" :label="item.label" size="mini">
           <!-- 输入框 -->
           <el-input
+            v-if="item.type === 'input'"
             v-model="data[item.name]"
             :placeholder="item.label"
-            v-if="item.type === 'input'"/>
+          />
           <!-- 日期框 -->
           <el-date-picker
-            type="datetime"
+            v-if="item.type === 'time'"
             v-model="data[item.name]"
+            type="datetime"
             :placeholder="item.label"
-            v-if="item.type === 'time'"/>
+          />
           <!-- 下拉框 -->
           <el-select
+            v-else-if="item.type === 'select'"
             v-model="data[item.name]"
             :placeholder="item.label"
             remote
@@ -32,13 +37,13 @@
             :loading="loading"
             :remote-method="queryOptions"
             @focus="initOptions(item.option)"
-            v-else-if="item.type === 'select'"
           >
             <el-option
               v-for="item in options"
               :key="item"
               :label="item"
-              :value="item"/>
+              :value="item"
+            />
           </el-select>
         </el-form-item>
       </el-col>
@@ -47,52 +52,52 @@
 </template>
 
 <script>
-  import axios from 'axios'
+import axios from 'axios'
 
-  export default {
-    name: 'CreateForm',
-    props: {columns: Array, rules: Object, record: Object},
-    data() {
-      return {
-        data: Object,
-        options: [],
-        optionType: String,
-        loading: false,
-      }
+export default {
+  name: 'CreateForm',
+  props: { columns: Array, rules: Object, record: Object },
+  data() {
+    return {
+      data: Object,
+      options: [],
+      optionType: String,
+      loading: false
+    }
+  },
+  created() {
+    this.initData()
+  },
+  methods: {
+    initData() {
+      const obj = {}
+      this.columns.map(d => {
+        obj[d.name] = this.record[d.name]
+      })
+      this.data = obj
     },
-    created() {
-      this.initData()
+    reset() {
+      this.columns.map((item, index) => {
+        this.$refs.data[index].resetFields()
+      })
     },
-    methods: {
-      initData() {
-        let obj = new Object()
-        this.columns.map(d => {
-          obj[d.name] = this.record[d.name]
-        })
-        this.data = obj
-      },
-      reset() {
-        this.columns.map((item, index) => {
-          this.$refs.data[index].resetFields()
-        });
-      },
-      initOptions(val) {
-        this.optionType = val
-        this.queryOptions()
-      },
-      // 查询
-      queryOptions(val) {
-        this.loading = true
-        axios.get('api/system/select/option', {params: {number: this.optionType, item: val}}).then(res => {
-          this.options = res.data.data
-          this.loading = false
-        }).catch(e => {
-          console.log('下拉数据', e)
-          this.loading = false
-        })
-      }
+    initOptions(val) {
+      this.optionType = val
+      this.queryOptions()
+    },
+    // 查询
+    queryOptions(val) {
+      this.loading = true
+      axios.get('api/system/select/option', { params: { number: this.optionType, item: val }}).then(res => {
+        this.options = res.data.data
+        this.loading = false
+      }).catch(e => {
+        console.log('下拉数据', e)
+        this.loading = false
+      })
     }
   }
+}
 </script>
 
 <style scoped>
